@@ -42,7 +42,7 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                   name: tfplan
-                  path: ./terraform/tfplan
+                  path: ./terraform-sprints/team-01/tfplan
 
     apply:
         name: Terraform Apply
