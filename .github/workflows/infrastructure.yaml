@@ -84,7 +84,7 @@ jobs:
 
     terraform-destroy:
         runs-on: ubuntu-latest
-        if: github.event.inputs.action == 'destroy'
+        needs: apply
         defaults:
             run:
                 working-directory: ./terraform/team-01
@@ -96,6 +96,12 @@ jobs:
 
           - name: Terraform Init
             run: terraform init
+         
+          - name: Download plan artifact
+            uses: actions/download-artifact@v4
+            with:
+              name: tfplan
+              path: ./terraform/team-01
 
-          - name: Terraform Destroy
-            run: terraform destroy -auto-approve
+          - name: Terraform Destroy from plan
+            run: terraform destroy -auto-approve tfplan
