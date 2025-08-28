@@ -5,8 +5,8 @@ on:
     push:
         branches:
             - main
-        paths:
-            - "terraform-sprints/**"
+        #paths:
+        #    - "terraform-sprints/**"
 
 jobs:
     plan:
