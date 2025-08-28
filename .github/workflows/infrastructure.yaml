@@ -91,17 +91,15 @@ jobs:
                 
         steps:
           - uses: actions/checkout@v5.0.0
+
           - name: Setup Terraform
             uses: hashicorp/setup-terraform@v3.1.2
 
           - name: Terraform Init
             run: terraform init
          
-          - name: Download plan artifact
-            uses: actions/download-artifact@v4
-            with:
-              name: tfplan
-              path: ./terraform/team-01
+          - name: Terraform Plan Destroy
+            run: terraform plan -destroy -out=tfplan
 
-          - name: Terraform Destroy from plan
-            run: terraform destroy -auto-approve tfplan
+          - name: Terraform Apply Destroy
+            run: terraform apply -auto-approve tfplan
