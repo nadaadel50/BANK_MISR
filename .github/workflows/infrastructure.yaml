@@ -49,6 +49,10 @@ jobs:
         name: Terraform Apply
         needs: plan
         runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ./terraform/team-01
+                
         environment:
             name: production
             url: https://console.aws.amazon.com
@@ -81,6 +85,10 @@ jobs:
     terraform-destroy:
         runs-on: ubuntu-latest
         if: github.event.inputs.action == 'destroy'
+        defaults:
+            run:
+                working-directory: ./terraform/team-01
+                
         steps:
           - uses: actions/checkout@v5.0.0
           - name: Setup Terraform
