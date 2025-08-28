@@ -10,7 +10,7 @@ on:
 
 jobs:
     plan:
-        name: Terraform Plan
+        name: Terraform Plann
         runs-on: ubuntu-latest
         defaults:
             run:
