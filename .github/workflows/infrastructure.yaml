@@ -5,12 +5,12 @@ on:
     push:
         branches:
             - main
-        #paths:
-        #    - "terraform-sprints/**"
+        paths:
+            - "terraform-sprints/**"
 
 jobs:
     plan:
-        name: Terraform Plann
+        name: Terraform Plan
         runs-on: ubuntu-latest
         steps:
             - name: Checkout 
